@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+        <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+        <RootNamespace>FluentGroupsClient</RootNamespace>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <UseAppHost>true</UseAppHost>
+
+        <!-- Only target x64 unless you truly need others -->
+        <Platforms>x64</Platforms>
+        <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+
+        <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+
+        <UseWinUI>true</UseWinUI>
+        <WinUISDKReferences>false</WinUISDKReferences>
+
+        <!-- Required for unpackaged WinUI -->
+        <WindowsPackageType>None</WindowsPackageType>
+
+        <!-- No PDBs -->
+        <DebugType>none</DebugType>
+
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="Assets\SplashScreen.scale-200.png"/>
+        <Content Include="Assets\LockScreenLogo.scale-200.png"/>
+        <Content Include="Assets\Square150x150Logo.scale-200.png"/>
+        <Content Include="Assets\Square44x44Logo.scale-200.png"/>
+        <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png"/>
+        <Content Include="Assets\StoreLogo.png"/>
+        <Content Include="Assets\Wide310x150Logo.scale-200.png"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Manifest Include="$(ApplicationManifest)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705"/>
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260317003"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\FluentGroupsUI\FluentGroupsUI.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <SelfContained>false</SelfContained>
+        <PublishSingleFile>false</PublishSingleFile>
+        <PublishTrimmed>false</PublishTrimmed>
+        <PublishReadyToRun>false</PublishReadyToRun>
+        <UseAppHost>true</UseAppHost>
+    </PropertyGroup>
+</Project>
+

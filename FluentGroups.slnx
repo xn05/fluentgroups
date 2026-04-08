@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="FluentGroupsClient/FluentGroupsClient.csproj" />
+  <Project Path="FluentGroupsServices/FluentGroupsServices.csproj" />
+  <Project Path="FluentGroupsUI/FluentGroupsUI.csproj" />
+</Solution>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="FluentGroupsUI.Views.TaskbarGroupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Spacing="4" Margin="0,0,0,16">
+            <TextBlock x:Name="GroupTitle" Text="Group Name" FontSize="28" FontWeight="Bold"/>
+            <TextBlock x:Name="GroupDescription" Text="Group description" FontSize="14" Opacity="0.7"/>
+        </StackPanel>
+
+        <!-- Group Info -->
+        <Border Grid.Row="1" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
+                Padding="12" CornerRadius="8" Margin="0,0,0,16">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Applications:" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="AppCountText" Text="0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Status:" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="StatusText" Text="Active"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Apps List -->
+        <ScrollViewer Grid.Row="2">
+            <StackPanel x:Name="AppsPanel" Spacing="8"/>
+        </ScrollViewer>
+
+        <!-- Action Buttons -->
+        <Grid Grid.Row="3" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" MinWidth="8"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" MinWidth="8"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Add App"/>
+            <Button Grid.Column="2" Content="Edit"/>
+            <Button Grid.Column="4" Content="Delete" Foreground="Red"/>
+        </Grid>
+    </Grid>
+</UserControl>
+

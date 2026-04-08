@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EXE": {
+      "commandName": "Executable",
+      "executablePath": "$(TargetPath)"
+    }
+  }
+}
