@@ -1,17 +1,24 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
 
 namespace FluentGroupsUI.Views;
 
-public sealed partial class HomeShellPage : UserControl
+public sealed partial class HomeShellPage : Page
 {
+    public event EventHandler? SettingsRequested;
+
     public HomeShellPage()
     {
         this.InitializeComponent();
+        NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Required;
     }
 
-    private void OnCreateGroupClicked(object sender, RoutedEventArgs e)
+    private void SettingsButton_Click(object sender, RoutedEventArgs e)
     {
-        // TODO: Navigate to create group view
+        SettingsRequested?.Invoke(this, EventArgs.Empty);
     }
 }
+
+
+

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="FluentGroupsUI.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Grid Padding="12">
+        <StackPanel Spacing="12">
+            <StackPanel Spacing="8">
+                <TextBlock Text="Appearance" FontSize="14" FontWeight="Bold" />
+                <StackPanel Spacing="4">
+                    <controls:SettingsCard Header="Toggle theme"
+                                           Description="Toggle the app theme.">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE793;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <ToggleSwitch x:Name="DarkThemeToggle"
+                                      OffContent="Light"
+                                      OnContent="Dark"
+                                      Toggled="DarkThemeToggle_Toggled" />
+                    </controls:SettingsCard>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
+
