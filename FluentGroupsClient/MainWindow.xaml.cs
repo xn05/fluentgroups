@@ -6,6 +6,7 @@ using Windows.Graphics;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
 using FluentGroupsUI.Views;
+using FluentGroupsUI.Windows;
 using FluentGroupsServices;
 using WinRT.Interop;
 
@@ -20,6 +21,7 @@ namespace FluentGroupsClient
     public sealed partial class MainWindow : Window
     {
         private ThemeService? _themeService;
+        private CreateGroupWindow? _createGroupWindow;
         
         private const int BaseWidthDip = 550;
         private const int BaseHeightDip = 760;
@@ -59,6 +61,7 @@ namespace FluentGroupsClient
                 
                 // Create shell with theme service
                 var shell = new FluentGroupsShell(_themeService);
+                shell.CreateGroupRequested += (_, _) => OpenCreateGroupWindow();
                 RootGrid.Children.Add(shell);
             }
             catch (Exception ex)
@@ -73,6 +76,19 @@ namespace FluentGroupsClient
                     }
                 });
             }
+        }
+        
+        private void OpenCreateGroupWindow()
+        {
+            if (_createGroupWindow is not null)
+            {
+                _createGroupWindow.Activate();
+                return;
+            }
+
+            _createGroupWindow = new CreateGroupWindow();
+            _createGroupWindow.Closed += (_, _) => _createGroupWindow = null;
+            _createGroupWindow.Activate();
         }
         
         private void AppWindow_Changed(AppWindow sender, AppWindowChangedEventArgs args)

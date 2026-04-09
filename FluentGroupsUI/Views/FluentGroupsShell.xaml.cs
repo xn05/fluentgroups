@@ -10,6 +10,8 @@ public sealed partial class FluentGroupsShell : UserControl
 {
     private readonly ThemeService _themeService;
 
+    public event EventHandler? CreateGroupRequested;
+
     public FluentGroupsShell(ThemeService themeService)
     {
         this.InitializeComponent();
@@ -38,10 +40,11 @@ public sealed partial class FluentGroupsShell : UserControl
         PageTitleText.Text = "Home";
         BackButton.Visibility = Visibility.Collapsed;
 
-        // Subscribe to home page events
+        // Subscribe to home page events.
         if (PageFrame.Content is HomeShellPage homePage)
         {
             homePage.SettingsRequested += (s, e) => NavigateToSettings();
+            homePage.NewGroupRequested += (s, e) => CreateGroupRequested?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -87,4 +90,3 @@ public sealed partial class FluentGroupsShell : UserControl
         }
     }
 }
-
